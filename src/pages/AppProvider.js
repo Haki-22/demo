@@ -4,16 +4,21 @@ import { configureStore } from '@reduxjs/toolkit'
 import { bindGroupActions } from 'reducers/_main';
 import { GroupReducer } from 'reducers/groupreducers'; 
 
+import { RanksReducer } from 'reducers/RanksReducers';
+import { bindRanksActions } from 'reducers/_main';
+
 /**
  * Toto je hlavni store pro celou aplikaci. Zde zacleneno pro demonstraci. 
  */
 export const store = configureStore(
     { 
         reducer: {
-            groups: GroupReducer
+            groups: GroupReducer,
+            ranks: RanksReducer
         }, 
         preloadedState: {
-            groups: {}
+            groups: {},
+            ranks: {}
         }
 })
 
@@ -26,7 +31,8 @@ const dispatch = store.dispatch
  * Tim se zabezpeci jejich "purity" (nejsou zavisle na globalnich parametrech)
  */
 export const actions = {
-    ...bindGroupActions(dispatch)
+    ...bindGroupActions(dispatch),
+    ...bindRanksActions(dispatch)
 }
 
 /**

@@ -4,6 +4,13 @@ import { GroupMembersCard } from './GroupMembersCard';
 import { GroupSubgroupsCard } from "./GroupSubgroupsCard";
 import { GroupNameInput } from "./GroupNameInput";
 
+
+
+import {RanksTableTestRename} from "./RanksTableTestRename";
+
+
+
+
 /**
  * Renders a card describing a group im detailed form.
  * @param {*} param0 
@@ -11,6 +18,7 @@ import { GroupNameInput } from "./GroupNameInput";
  */
 export const GroupLarge = ({group, actions}) => {
     return (
+        <div className=". In JSX, a component must return a single root element.">
         <Card>
             <Card.Header>
                 <Card.Title>
@@ -27,5 +35,9 @@ export const GroupLarge = ({group, actions}) => {
                 {JSON.stringify(group)}
             </Card.Body>
         </Card>
+       
+        <RanksTableTestRename/>
+
+        </div>
     )
 }

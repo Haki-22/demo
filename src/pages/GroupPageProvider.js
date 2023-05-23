@@ -8,6 +8,9 @@ import { fakeQueryGroup } from 'queries/fakequerygroup';
 import { GroupFetch } from 'reducers/GroupAsyncActions';
 import { actions } from './AppProvider';
 
+
+import {RanksPageProvider} from './RanksPageProvider';
+
 /**
  * Komponenta, ktera je zaclenena ve strukture s Providerem, tedy se store, importuje si akce a poskytuje je podrizenym komponentam
  * @param {*} param0 
@@ -39,11 +42,17 @@ export const GroupPageProvider = ({id}) => {
         //skupina je ve store
         return (
             <GroupLarge group={group} actions={actions}/>
+            
         )
     } else {
         //skupina ve store neni
+
+        //Add ranks so that docker doesnt have to run
         return (
-            <div>Loading... {id}, {group}</div>
+            <div>Loading... {id}, {group}
+           
+            </div>
+            
         )
     }
 }
