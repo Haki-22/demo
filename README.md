@@ -16,3 +16,8 @@ Components in demo repo
 - Single entry from server
 
 - Statefull component, can delete it from store
+
+![Store](/public/Store.png)
+
+
+![Store2](/public/store2.png)
