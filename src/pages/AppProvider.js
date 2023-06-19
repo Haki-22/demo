@@ -1,11 +1,19 @@
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 
-import { bindGroupActions } from 'reducers/_main';
+import { bindGroupActions, bindRoleActions, bindGroupTypeActions, bindGFinanceTypeActions, bindEventTypeActions } from 'reducers/_main';
 import { GroupReducer } from 'reducers/groupreducers'; 
 
 import { RanksReducer } from 'reducers/RanksReducers';
 import { bindRanksActions } from 'reducers/_main';
+
+import { RoleTypesActions, RoleTypesReducer } from 'reducers/RoleTypesReducers';
+import { GroupTypesActions, GroupTypesReducer } from 'reducers/GroupTypeReducers';
+
+import { FinanceTypesReducer } from 'reducers/FinanceTypeReducers';
+import { bindFinanceTypeActions } from 'reducers/_main';
+import {EventTypesReducer} from 'reducers/EventTypeReducers'
+import { bindRoleTypeActions } from 'reducers/_main';
 
 /**
  * Toto je hlavni store pro celou aplikaci. Zde zacleneno pro demonstraci. 
@@ -13,12 +21,20 @@ import { bindRanksActions } from 'reducers/_main';
 export const store = configureStore(
     { 
         reducer: {
-            groups: GroupReducer,
-            ranks: RanksReducer
+            //groups: GroupReducer,
+            //ranks: RanksReducer,
+            roleTypes: RoleTypesReducer,
+            groupTypes: GroupTypesReducer,
+            financeTypes: FinanceTypesReducer,
+            eventTypes: EventTypesReducer,
         }, 
         preloadedState: {
-            groups: {},
-            ranks: {}
+            //groups: {},
+            //ranks: {},
+            roleTypes: [],
+            groupTypes: [],
+            financeTypes: [],
+            eventTypes: [],
         }
 })
 
@@ -31,8 +47,12 @@ const dispatch = store.dispatch
  * Tim se zabezpeci jejich "purity" (nejsou zavisle na globalnich parametrech)
  */
 export const actions = {
-    ...bindGroupActions(dispatch),
-    ...bindRanksActions(dispatch)
+    //...bindGroupActions(dispatch),
+    //...bindRanksActions(dispatch),
+    ...bindRoleTypeActions(dispatch),
+    ...bindGroupTypeActions(dispatch),
+    ...bindFinanceTypeActions(dispatch),
+    ...bindEventTypeActions(dispatch),
 }
 
 /**

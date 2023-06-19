@@ -7,7 +7,13 @@ import { GroupPage } from 'pages/GroupPage';
 import { GroupPageProvider } from 'pages/GroupPageProvider';
 import { AppProvider } from 'pages/AppProvider';
 import { RanksPageProvider } from 'pages/RanksPageProvider';
-import { FakeRankPage } from "./pages/FakeRankPage"
+
+
+import { RoleTypesPage } from 'pages/RoleTypesPage';
+import {GroupTypesPage} from 'pages/GroupTypesPage';
+import { FinanceTypesPage } from 'pages/FinanceTypesPage';
+import { EventTypesPage } from 'pages/EventTypesPage';
+
 
 function App() {
   return (
@@ -15,9 +21,20 @@ function App() {
     <div className="App">
       
       <AppProvider>
-        <RanksPageProvider id="05a3e0f5-f71e-4caa-8012-229d868aa8ca"/>
+        <RoleTypesPage/>
+        <GroupTypesPage/>
+        <FinanceTypesPage/>
+        <EventTypesPage/>
       </AppProvider>
     </div>
+
+
+    /* <div className="App">
+      
+    <AppProvider>
+      <RanksPageProvider id="05a3e0f5-f71e-4caa-8012-229d868aa8ca"/>
+    </AppProvider>
+  </div>*/
 
       /* <div className="App">
             

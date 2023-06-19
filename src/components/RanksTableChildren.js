@@ -57,11 +57,13 @@ export const RanksTableChildren = ({rank, actions}) => {
 
         <td className="px-6 py-4 whitespace-nowrap w-full">{rank.lastchange} </td>
 
+        
         <td>
         <DeleteButton onClick={() => onClickDelete(rank.id)}>
             <Trash /> Delete
         </DeleteButton>
         </td>
+        
 
       </tr>
         </tbody>

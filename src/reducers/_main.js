@@ -5,7 +5,21 @@ import { RanksActions } from "./RanksReducers"
 import { RankFetch } from "./RankAsyncActions"
 import { RankFakeFetch } from "./RankAsyncActions"
 
+import { RoleTypeAsyncUpdate, RoleTypesFetch } from "./RoleTypesAsyncActions"
 
+import { RoleTypeAsyncAdd } from "./RoleTypesAsyncActions"
+import { RoleTypesActions } from "./RoleTypesReducers"
+
+import { GroupTypeAsyncUpdate, GroupTypesFetch } from "./GroupTypeAsyncActions"
+import { GroupTypesActions } from "./GroupTypeReducers"
+
+import { FinanceTypesActions } from "./FinanceTypeReducers"
+import { FinanceTypesFetch, FinanceTypeAsyncUpdate } from "./FinanceTypeAsyncActions"
+
+import { EventTypesActions } from "./EventTypeReducers"
+import { EventTypesFetch, EventTypeAsyncUpdate } from "./EventTypeAsyncActions"
+
+import {addType, updateType, updateExistingType} from "./VecReducers"
 
 /**
  * vytvori actions, ktere pri volani uz vse radne provedou
@@ -29,7 +43,6 @@ export const bindGroupActions = (dispatch) => {
     }
 }
 
-
 export const bindRanksActions = (dispatch) => {
     return {
 
@@ -41,3 +54,44 @@ export const bindRanksActions = (dispatch) => {
 
     }
 }
+
+export const bindRoleTypeActions = (dispatch) => {
+    return {
+        roleFetch: () => dispatch(RoleTypesFetch()),
+        onRoleTypeAdd: (payload) => dispatch(RoleTypesActions.addRoleType(payload)), 
+        onRoleTypeUpdate: (payload) => dispatch(RoleTypesActions.updateExistingRoleType(payload)),
+        onRoleTypeAddMutation: (payload) => dispatch(RoleTypeAsyncAdd(payload)),
+        onRoleTypeUpdateMutation: (payload) => dispatch(RoleTypeAsyncUpdate(payload)),
+    };
+};
+
+export const bindGroupTypeActions = (dispatch) => {
+    return {
+        groupTypeFetch: () => dispatch(GroupTypesFetch()),
+        onGroupTypeAdd: (payload) => dispatch(GroupTypesActions.addGroupType(payload)),
+        onGroupTypeUpdate: (payload) => dispatch(GroupTypesActions.updateExistingGroupType(payload))
+        //onGroupTypeUpdate: (gt) => dispatch(GroupTypesActions.secondGroupTypeUpdate(gt))
+    };
+};
+
+export const bindFinanceTypeActions = (dispatch) => {
+    return {
+        onFinanceTypeUpdate: (ft) => dispatch(FinanceTypesActions.updateExistingFinanceType(ft)),
+        onFinanceTypeAdd: (ft) => dispatch(FinanceTypesActions.financeType_add(ft)),
+
+        financeTypesFetch: () => dispatch(FinanceTypesFetch()), 
+       
+        financeTypeAsyncUpdate: (financeType) => dispatch(FinanceTypeAsyncUpdate(financeType))
+    }
+}
+
+export const bindEventTypeActions = (dispatch) => {
+    return {
+        eventTypesFetch: () => dispatch(EventTypesFetch()),
+        onEventTypeAdd: (payload) => dispatch(EventTypesActions.addEventType(payload)),
+        onEventTypeUpdate: (payload) => dispatch(EventTypesActions.updateExistingEventType(payload))
+        //onEventTypeUpdate: (payload) => dispatch(EventTypesActions.updateEventType(payload)),
+        //onGroupTypeUpdate: (gt) => dispatch(EventTypesActions.secondGroupTypeUpdate(gt))
+    };
+};
+
