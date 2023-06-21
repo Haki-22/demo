@@ -48,6 +48,14 @@ Revised progress on consultation, seems good
 
 - Send new or modified data to server for roleTypes
 
+## 21.06
+
+- Project types
+
+- Addbutton test
+
+- JSDOC
+
 >Fixed:
 >   
 >  - Fix groupTypes not showing
@@ -90,21 +98,22 @@ Todo:
 
 
 
-- > Ask:
+> Ask:
+>   
+>   - AddButton
+>
+>   - RowPage?
+>
+>   - Jak moc rozdělit AsyncActions 
 
-    - If this is the right way 
-    >>**It is**
 
-    - Wethere to use TextInput or "save" button >
-    >>**How u  want it, maybe reset button would be better**
 
-    - Only add and update?  
-    >>**Only add and update, don't delete** *Data are bound accross the whole system*
 
-    - Which other data to add 
-    >>**EvenetTypePage, ProjectTypePage** *Check the documentation*
 
-    ## ALL 
+ 
+ 
+ 
+## ALL 
 Editace systémových informací (typy entit, kategorie entit) ?? 
 - **DONE** typy rolí uživatelů ve skupinách, => garant, velitel čety - roleTypePage
 
