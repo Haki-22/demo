@@ -1,67 +1,68 @@
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 
-import { bindGroupActions, bindRoleActions, bindGroupTypeActions, bindGFinanceTypeActions, bindEventTypeActions } from 'reducers/_main';
-import { GroupReducer } from 'reducers/groupreducers'; 
+//import { bindGroupActions, bindRoleActions, bindGFinanceTypeActions } from 'reducers/_main';
+//import { GroupReducer } from 'reducers/groupreducers'; 
 
-import { RanksReducer } from 'reducers/RanksReducers';
-import { bindRanksActions } from 'reducers/_main';
+//import { RanksReducer } from 'reducers/RanksReducers';
+//import { bindRanksActions } from 'reducers/_main';
 
 import { RoleTypesActions, RoleTypesReducer } from 'reducers/RoleTypesReducers';
 import { GroupTypesActions, GroupTypesReducer } from 'reducers/GroupTypeReducers';
-
 import { FinanceTypesReducer } from 'reducers/FinanceTypeReducers';
-import { bindFinanceTypeActions } from 'reducers/_main';
-import {EventTypesReducer} from 'reducers/EventTypeReducers'
-import { bindRoleTypeActions } from 'reducers/_main';
+import { EventTypesReducer } from 'reducers/EventTypeReducers'
+import { ProjectTypesReducer } from 'reducers/ProjectTypesReducers';
+
+import { bindFinanceTypeActions, bindProjectTypeActions, bindRoleTypeActions, bindEventTypeActions, bindGroupTypeActions } from 'reducers/_main';
 
 /**
- * Toto je hlavni store pro celou aplikaci. Zde zacleneno pro demonstraci. 
+ * This is the main store for the entire application.
+ * It includes the necessary reducers and preloaded state.
  */
-export const store = configureStore(
-    { 
-        reducer: {
-            //groups: GroupReducer,
-            //ranks: RanksReducer,
-            roleTypes: RoleTypesReducer,
-            groupTypes: GroupTypesReducer,
-            financeTypes: FinanceTypesReducer,
-            eventTypes: EventTypesReducer,
-        }, 
-        preloadedState: {
-            //groups: {},
-            //ranks: {},
-            roleTypes: [],
-            groupTypes: [],
-            financeTypes: [],
-            eventTypes: [],
-        }
-})
+export const store = configureStore({
+  reducer: {
+    roleTypes: RoleTypesReducer,
+    groupTypes: GroupTypesReducer,
+    financeTypes: FinanceTypesReducer,
+    eventTypes: EventTypesReducer,
+    projectTypes: ProjectTypesReducer,
+    
+  },
+  preloadedState: {
+    roleTypes: [],
+    groupTypes: [],
+    financeTypes: [],
+    eventTypes: [],
+    projectTypes:[],
+  },
+});
 
-const dispatch = store.dispatch
+const dispatch = store.dispatch;
 
 /**
- * Vsechny akce / callbacky pro celou aplikaci
- * Lze je kdekoliv importovat a vyuzit. 
- * Je ovsem zadouci, aby se tyto dostaly ke "spodnim" komponentam pres props.
- * Tim se zabezpeci jejich "purity" (nejsou zavisle na globalnich parametrech)
+ * All actions/callbacks for the entire application.
+ * They can be imported and used anywhere.
+ * However, it is recommended to pass these actions down as props to "lower-level" components.
+ * This ensures their "purity" (not relying on global parameters).
  */
 export const actions = {
-    //...bindGroupActions(dispatch),
-    //...bindRanksActions(dispatch),
-    ...bindRoleTypeActions(dispatch),
-    ...bindGroupTypeActions(dispatch),
-    ...bindFinanceTypeActions(dispatch),
-    ...bindEventTypeActions(dispatch),
-}
+  //...bindGroupActions(dispatch),
+  //...bindRanksActions(dispatch),
+  ...bindFinanceTypeActions(dispatch),
+  ...bindEventTypeActions(dispatch),
+  ...bindRoleTypeActions(dispatch),
+  ...bindGroupTypeActions(dispatch),
+  ...bindProjectTypeActions(dispatch),
+
+};
 
 /**
- * Zapouzdruje vnorene komponenty a umoznuje jim vyuzivat store - centralni data
+ * Encapsulates nested components and allows them to access the store - central data.
  */
 export const AppProvider = (props) => {
-    return (
-        <Provider store={store}>
-            {props.children}
-        </Provider>
-    )
-}
+  return (
+  <Provider store={store}>
+    {props.children}
+  </Provider>
+  )
+};

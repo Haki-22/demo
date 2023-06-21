@@ -19,7 +19,12 @@ import { FinanceTypesFetch, FinanceTypeAsyncUpdate } from "./FinanceTypeAsyncAct
 import { EventTypesActions } from "./EventTypeReducers"
 import { EventTypesFetch, EventTypeAsyncUpdate } from "./EventTypeAsyncActions"
 
+import {ProjectTypesActions} from "./ProjectTypesReducers"
+import { ProjectTypesFetch } from "./ProjectTypesAsyncActions"
+
 import {addType, updateType, updateExistingType} from "./VecReducers"
+
+
 
 /**
  * vytvori actions, ktere pri volani uz vse radne provedou
@@ -55,9 +60,15 @@ export const bindRanksActions = (dispatch) => {
     }
 }
 
+/**
+ * Binds role type actions to the dispatch function.
+ * Can be accessed by actions throughout the whole app
+ * @param {function} dispatch - The dispatch function provided by Redux.
+ * @returns {Object} An object containing the bound action functions.
+ */
 export const bindRoleTypeActions = (dispatch) => {
     return {
-        roleFetch: () => dispatch(RoleTypesFetch()),
+        roleTypesFetch: () => dispatch(RoleTypesFetch()),
         onRoleTypeAdd: (payload) => dispatch(RoleTypesActions.addRoleType(payload)), 
         onRoleTypeUpdate: (payload) => dispatch(RoleTypesActions.updateExistingRoleType(payload)),
         onRoleTypeAddMutation: (payload) => dispatch(RoleTypeAsyncAdd(payload)),
@@ -95,3 +106,12 @@ export const bindEventTypeActions = (dispatch) => {
     };
 };
 
+export const bindProjectTypeActions = (dispatch) => {
+    return {
+        projectTypesFetch: () => dispatch(ProjectTypesFetch()),
+        onProjectTypeAdd: (payload) => dispatch(ProjectTypesActions.addProjectType(payload)), 
+        onProjectTypeUpdate: (payload) => dispatch(ProjectTypesActions.updateExistingProjectType(payload)),
+        //onProjectTypeAddMutation: (payload) => dispatch(ProjectTypesActions.ProjectTypeAsyncAdd(payload)),
+        //onProjectTypeUpdateMutation: (payload) => dispatch(ProjectTypesActions.ProjectTypeAsyncUpdate(payload)),
+    };
+};

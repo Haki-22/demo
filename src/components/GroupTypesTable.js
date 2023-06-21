@@ -66,9 +66,9 @@ export const GroupTypesTable = ({ groupTypes, actions }) => {
                     ))
                 ) : 
                 (
-                    <tr>
-                        <td>No groupTypes found</td>
-                    </tr>
+                <tr>
+                    <td colSpan={6}>No groupTypes found</td>
+                </tr>
                 )}
                  <tr style={{verticalAlign: "middle"}}>
                     <td style={{ background: "green", color: "white"}}>+</td>

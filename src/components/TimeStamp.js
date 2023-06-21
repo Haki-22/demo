@@ -1,8 +1,12 @@
+/**
+ * Generates a timestamp in the format "YYYY-MM-DD HH:mm:ss.SSS".
+ * @returns {string} The generated timestamp.
+ */
 export const generateTimestamp = () => {
     /* const currentDate = new Date();
     const timestamp = currentDate.toISOString().slice(0, -1);
     return timestamp */
-
+  
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, "0");
@@ -11,8 +15,8 @@ export const generateTimestamp = () => {
     const minutes = String(currentDate.getMinutes()).padStart(2, "0");
     const seconds = String(currentDate.getSeconds()).padStart(2, "0");
     const milliseconds = String(currentDate.getMilliseconds());
-
+  
     const timestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
     return timestamp;
-
-}
+  };
+  

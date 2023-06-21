@@ -1,33 +1,34 @@
-import { Trash } from 'react-bootstrap-icons';
-import { DeleteButton } from 'components/DeleteButton';
+import { useState } from 'react';
 
 import { TextInput } from 'components/TextInput';
+import { AddButton } from './AddButton';
 
 import { RoleTypesTableRow } from './RoleTypesTableRow';
 
-import { CardText } from "react-bootstrap-icons";
-import { useDispatch } from "react-redux";
-
 import { generateUUID } from 'utils/CreateID';
-import { useState } from 'react';
-import { AddButton } from './AddButton';
 import { generateTimestamp } from './TimeStamp';
 
 
 /**
  * Table component used to display a list of roleTypes
- * @param {*} param0 
- * @returns 
+ *
+ * @component
+ * @param {Object[]} roleTypes - An array of role types.
+ * @param {Object} actions - Actions object for performing operations on role types.
+ * @returns {JSX.Element} The rendered RoleTypesTable component.
  */
 export const RoleTypesTable = ({ roleTypes, actions }) => {
-
-
     
     const [id, setNewID] = useState(generateUUID)
     const [name, setNewName] = useState("")
     const [nameEn, setNewNameEn] = useState("")
     const [lastChange, setLastChange] = useState(generateTimestamp);
 
+    /**
+   * Event handler for adding a new role type.
+   *
+   * @function
+   */
     const RoleTypeAdd = () =>{
         setLastChange(generateTimestamp)
         console.log(id, name, nameEn, lastChange, 'New RoleType')
@@ -69,7 +70,7 @@ export const RoleTypesTable = ({ roleTypes, actions }) => {
                 ) : 
                 (
                     <tr>
-                        <td>No roleTypes found</td>
+                        <td colSpan={6}>No roleTypes found</td>
                     </tr>
                 )}
                  <tr style={{verticalAlign: "middle"}}>
@@ -100,4 +101,3 @@ export const RoleTypesTable = ({ roleTypes, actions }) => {
         </table>
     );
 };
-

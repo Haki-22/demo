@@ -46,6 +46,8 @@ Revised progress on consultation, seems good
 
 - Add and modify store
 
+- Send new or modified data to server for roleTypes
+
 >Fixed:
 >   
 >  - Fix groupTypes not showing
@@ -67,12 +69,8 @@ Revised progress on consultation, seems good
 >
 > - RoleTypes instead of Roles
 >
->> RoleTypesPage doesnt update other roleTypes, by query id, they are inserted (id=a, "id": "a5ee742d-8f4a-4c86-bed5-fac048571160")
+>
 
-
----
-
-FinanceType mutatuion není?
 
 ---
 
@@ -80,17 +78,9 @@ Todo:
 
 - Lepší dictionary než vektor - Přes dic to dělalo divné věci :)
 
-- Mutations (Nenašel jsem, nebo neexistují):
+- Mutation for groupType
 
-    - FinanceType?
-
-    - ProjectType?
-
-    - EvenType?
-
-- Queries:
-    
-    -Kategorie financí?
+- query and page for Medal types 
 
 - JSDoc
 
@@ -116,13 +106,43 @@ Todo:
 
     ## ALL 
 Editace systémových informací (typy entit, kategorie entit) ?? 
-- **DONE** typy skupin, 
-- **DONE** typy rolí uživatelů ve skupinách, => garant, velitel čety
-- **DONE** typy událostí, => Výuka, nástup, zkouška, konzultace - EvenetTypePage
-- kategorie projektů, => Granty ČR, mezinárodní EU  - ProjectTypePage
-- typy projektů, => podskupiny grantů (GAČR, TECHONOLOGICKÁ tačr)
--  kategorie financí => nadtypama 
-- **DONE** typy financí => osobní, nákup služeb (Rozdělení rozpočtu)  **FinenaceTypePage
+- **DONE** typy rolí uživatelů ve skupinách, => garant, velitel čety - roleTypePage
+
+- **Add mutation** typy skupin, - groupTypePage
+
+**Neexistuje mutation**:
+
+-  typy financí => osobní, nákup služeb (Rozdělení rozpočtu)  - finenaceTypePage
+
+-  typy událostí, => Výuka, nástup, zkouška, konzultace - evenetTypePage
+
+- typy projektů, => podskupiny grantů (GAČR, TECHONOLOGICKÁ tačr) - projectTypePage
+
+-  typy medailí => zlatá, stříbrná, bronzová ... 
+
+query {medalTypePage {
+  id
+  name
+}}
+
+---
+
+**Neexistuje query, ani mutation** 
+
+- kategorie projektů, => Granty ČR, mezinárodní EU  
+
+    - Existuje pouze: query {projectPage{id name lastchange}}
+
+        - Returns a list of projects
+
+- kategorie financí => nadtypama 
+    
+    - Existuje pouze: query {financePage{id, name, lastchange, amount}} / financeInsert
+
+        - Returns a list of finances
+
 - kategorie medailí => Vyznamenání (statní, vojenská,...) 
-- typy medailí => zlatá, stříbrná, bronzová ... 
+
+    - Existuje pouze: query {medalPage{id year}}
+
 

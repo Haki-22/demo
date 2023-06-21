@@ -10,9 +10,10 @@ import { RanksPageProvider } from 'pages/RanksPageProvider';
 
 
 import { RoleTypesPage } from 'pages/RoleTypesPage';
-import {GroupTypesPage} from 'pages/GroupTypesPage';
+import { GroupTypesPage } from 'pages/GroupTypesPage';
 import { FinanceTypesPage } from 'pages/FinanceTypesPage';
 import { EventTypesPage } from 'pages/EventTypesPage';
+import { ProjectTypesPage } from 'pages/ProjectTypesPage';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <GroupTypesPage/>
         <FinanceTypesPage/>
         <EventTypesPage/>
+        <ProjectTypesPage/>
       </AppProvider>
     </div>
 

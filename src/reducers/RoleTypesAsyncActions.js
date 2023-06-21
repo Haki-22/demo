@@ -1,6 +1,3 @@
-import { RanksActions } from "./RanksReducers";
-import { RanksQuery, RankQuery } from "queries/RanksQuery";
-import { fakeQueryRank } from "queries/fakequeryrank";
 import { authorizedFetch } from "queries/authorizedFetch"
 
 import { RoleTypesQuery } from "queries/RoleTypesQuery";
@@ -131,17 +128,16 @@ export const RoleTypeAsyncUpdate= (RoleType) => (dispatch, getState) => {
         }
 
     const params = {
-        method: 'POST',
+        /* method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        redirect: 'follow', // manual, *follow, error
+        redirect: 'follow', // manual, *follow, error */
         body: JSON.stringify(RoleTypeMutationJSON(RoleType))
     }
 
-
-    return fetch('/api/gql', params)
+    return authorizedFetch('/api/gql', params)
     //return authorizedFetch('/api/gql', params)
         .then(
             resp => resp.json(),

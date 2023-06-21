@@ -63,14 +63,6 @@ const onChangeName = (value) => {
             />
             </td>
         <td className="px-6 py-4 whitespace-nowrap w-full">{roleType.lastchange} </td>
-
-        {/*
-        <td>
-        <DeleteButton onClick={() => onClickDelete(roleType.id)}>
-            <Trash /> Delete
-        </DeleteButton>
-        </td>
-        */}
         <td> Revert? </td>
 
     </tr>
