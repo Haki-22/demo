@@ -1,5 +1,10 @@
 import { authorizedFetch } from './authorizedFetch'
 
+/**
+* Generates the JSON object for querying all project types.
+*
+* @returns {Object} The query JSON object.
+*/
 const ProjectTypesQueryJSON = () => ({
     "query":
         `query {
@@ -12,9 +17,10 @@ const ProjectTypesQueryJSON = () => ({
 })
 
 /**
- * Realizace dotazu na server. Vyuziva autorizedFetch (zapouzdreni)
- * @returns 
- */
+* Sends a request to query all project types.
+*
+* @returns {Promise<Response>} The fetch request promise.
+*/
 export const ProjectTypesQuery = () =>
     authorizedFetch('/gql', {
         body: JSON.stringify(ProjectTypesQueryJSON()),

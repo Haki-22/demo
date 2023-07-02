@@ -1,64 +1,21 @@
-import { GroupActions } from "./groupreducers"
-import { GroupFetch, GroupFakeFetch, GroupAsyncUpdate } from "./GroupAsyncActions"
-
-import { RanksActions } from "./RanksReducers"
-import { RankFetch } from "./RankAsyncActions"
-import { RankFakeFetch } from "./RankAsyncActions"
-
-import { RoleTypeAsyncUpdate, RoleTypesFetch } from "./RoleTypesAsyncActions"
-
-import { RoleTypeAsyncAdd } from "./RoleTypesAsyncActions"
+import { RoleTypeAsyncUpdate, RoleTypesFetch, RoleTypeAsyncAdd } from "../asyncActions/RoleTypesAsyncActions"
 import { RoleTypesActions } from "./RoleTypesReducers"
 
-import { GroupTypeAsyncUpdate, GroupTypesFetch } from "./GroupTypeAsyncActions"
-import { GroupTypesActions } from "./GroupTypeReducers"
+import { GroupTypesAsyncUpdate, GroupTypesFetch, GroupTypeAsyncAdd } from "asyncActions/GroupTypesAsyncActions"
+import { GroupTypesActions } from "./GroupTypesReducers"
 
 import { FinanceTypesActions } from "./FinanceTypeReducers"
-import { FinanceTypesFetch, FinanceTypeAsyncUpdate } from "./FinanceTypeAsyncActions"
+import { FinanceTypesFetch, FinanceTypeAsyncUpdate } from "../asyncActions/FinanceTypeAsyncActions"
 
 import { EventTypesActions } from "./EventTypeReducers"
-import { EventTypesFetch, EventTypeAsyncUpdate } from "./EventTypeAsyncActions"
+import { EventTypesFetch, EventTypeAsyncUpdate } from "../asyncActions/EventTypeAsyncActions"
 
 import {ProjectTypesActions} from "./ProjectTypesReducers"
-import { ProjectTypesFetch } from "./ProjectTypesAsyncActions"
+import { ProjectTypesFetch } from "../asyncActions/ProjectTypesAsyncActions"
 
-import {addType, updateType, updateExistingType} from "./VecReducers"
+import { MedalTypeAsyncUpdate, MedalTypesFetch, MedalTypeAsyncAdd } from "../asyncActions/MedalTypesAsyncActions"
+import { MedalTypesActions } from "./MedalTypesReducers"
 
-
-
-/**
- * vytvori actions, ktere pri volani uz vse radne provedou
- * jsou zahrnuty i "asynchronni" akce
- * @param {*} dispatch 
- * @returns 
- */
-export const bindGroupActions = (dispatch) => {
-    return {
-        onGroupUpdate: (g) => dispatch(GroupActions.group_update(g)),
-        onGroupAdd: (g) => dispatch(GroupActions.group_add(g)),
-    
-        onGroupMemberRemove: ({user, group}) => dispatch(GroupActions.group_memberRemove({user, group})),
-        onGroupMemberUpdate: (payload) => dispatch(GroupActions.group_memberUpdate(payload)),
-    
-        groupFetch: (id) => dispatch(GroupFetch(id)),
-        
-        groupFakeFetch: (id) => dispatch(GroupFakeFetch(id)),    
-       
-        groupAsyncUpdate: (group) => dispatch(GroupAsyncUpdate(group))
-    }
-}
-
-export const bindRanksActions = (dispatch) => {
-    return {
-
-        onRankRemove: (payload) => dispatch(RanksActions.ranks_memberRemove(payload)),
-        onRankUpdate: (payload) => dispatch(RanksActions.ranks_memberUpdate(payload)),
-
-        rankFetch: (id) => dispatch(RankFetch(id)),
-        rankFakeFetch: (id) => dispatch(RankFakeFetch(id)),
-
-    }
-}
 
 /**
  * Binds role type actions to the dispatch function.
@@ -71,41 +28,63 @@ export const bindRoleTypeActions = (dispatch) => {
         roleTypesFetch: () => dispatch(RoleTypesFetch()),
         onRoleTypeAdd: (payload) => dispatch(RoleTypesActions.addRoleType(payload)), 
         onRoleTypeUpdate: (payload) => dispatch(RoleTypesActions.updateExistingRoleType(payload)),
+        
         onRoleTypeAddMutation: (payload) => dispatch(RoleTypeAsyncAdd(payload)),
         onRoleTypeUpdateMutation: (payload) => dispatch(RoleTypeAsyncUpdate(payload)),
     };
 };
 
+/**
+ * Binds group type actions to the dispatch function.
+ * Can be accessed by actions throughout the whole app
+ * @param {function} dispatch - The dispatch function provided by Redux.
+ * @returns {Object} An object containing the bound action functions.
+ */
 export const bindGroupTypeActions = (dispatch) => {
     return {
-        groupTypeFetch: () => dispatch(GroupTypesFetch()),
+        groupTypesFetch: () => dispatch(GroupTypesFetch()),
         onGroupTypeAdd: (payload) => dispatch(GroupTypesActions.addGroupType(payload)),
-        onGroupTypeUpdate: (payload) => dispatch(GroupTypesActions.updateExistingGroupType(payload))
-        //onGroupTypeUpdate: (gt) => dispatch(GroupTypesActions.secondGroupTypeUpdate(gt))
+        onGroupTypeUpdate: (payload) => dispatch(GroupTypesActions.updateExistingGroupType(payload)),
+        
+        onGroupTypeUpdateMutation: (payload) => dispatch(GroupTypesAsyncUpdate(payload)),
+        onGroupTypeAddMutation: (payload) => dispatch(GroupTypeAsyncAdd(payload)),
     };
 };
 
-export const bindFinanceTypeActions = (dispatch) => {
-    return {
-        onFinanceTypeUpdate: (ft) => dispatch(FinanceTypesActions.updateExistingFinanceType(ft)),
-        onFinanceTypeAdd: (ft) => dispatch(FinanceTypesActions.financeType_add(ft)),
-
-        financeTypesFetch: () => dispatch(FinanceTypesFetch()), 
-       
-        financeTypeAsyncUpdate: (financeType) => dispatch(FinanceTypeAsyncUpdate(financeType))
-    }
-}
-
+/**
+ * Binds event type actions to the dispatch function.
+ * Can be accessed by actions throughout the whole app
+ * @param {function} dispatch - The dispatch function provided by Redux.
+ * @returns {Object} An object containing the bound action functions.
+ */
 export const bindEventTypeActions = (dispatch) => {
     return {
         eventTypesFetch: () => dispatch(EventTypesFetch()),
         onEventTypeAdd: (payload) => dispatch(EventTypesActions.addEventType(payload)),
         onEventTypeUpdate: (payload) => dispatch(EventTypesActions.updateExistingEventType(payload))
-        //onEventTypeUpdate: (payload) => dispatch(EventTypesActions.updateEventType(payload)),
-        //onGroupTypeUpdate: (gt) => dispatch(EventTypesActions.secondGroupTypeUpdate(gt))
     };
 };
 
+/**
+ * Binds finance type actions to the dispatch function.
+ * Can be accessed by actions throughout the whole app
+ * @param {function} dispatch - The dispatch function provided by Redux.
+ * @returns {Object} An object containing the bound action functions.
+ */
+export const bindFinanceTypeActions = (dispatch) => {
+    return {
+        financeTypesFetch: () => dispatch(FinanceTypesFetch()),
+        onFinanceTypeUpdate: (ft) => dispatch(FinanceTypesActions.updateExistingFinanceType(ft)),
+        onFinanceTypeAdd: (ft) => dispatch(FinanceTypesActions.financeType_add(ft)),
+    }
+}
+
+/**
+ * Binds project type actions to the dispatch function.
+ * Can be accessed by actions throughout the whole app
+ * @param {function} dispatch - The dispatch function provided by Redux.
+ * @returns {Object} An object containing the bound action functions.
+ */
 export const bindProjectTypeActions = (dispatch) => {
     return {
         projectTypesFetch: () => dispatch(ProjectTypesFetch()),
@@ -113,5 +92,22 @@ export const bindProjectTypeActions = (dispatch) => {
         onProjectTypeUpdate: (payload) => dispatch(ProjectTypesActions.updateExistingProjectType(payload)),
         //onProjectTypeAddMutation: (payload) => dispatch(ProjectTypesActions.ProjectTypeAsyncAdd(payload)),
         //onProjectTypeUpdateMutation: (payload) => dispatch(ProjectTypesActions.ProjectTypeAsyncUpdate(payload)),
+    };
+};
+
+/**
+ * Binds medal type actions to the dispatch function.
+ * Can be accessed by actions throughout the whole app
+ * @param {function} dispatch - The dispatch function provided by Redux.
+ * @returns {Object} An object containing the bound action functions.
+ */
+export const bindMedalTypeActions = (dispatch) => {
+    return {
+        medalTypesFetch: () => dispatch(MedalTypesFetch()),
+        onMedalTypeAdd: (payload) => dispatch(MedalTypesActions.addMedalType(payload)), 
+        onMedalTypeUpdate: (payload) => dispatch(MedalTypesActions.updateExistingMedalType(payload)),
+        
+        onMedalTypeAddMutation: (payload) => dispatch(MedalTypeAsyncAdd(payload)),
+        onMedalTypeUpdateMutation: (payload) => dispatch(MedalTypeAsyncUpdate(payload)),
     };
 };

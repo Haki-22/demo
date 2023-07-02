@@ -1,24 +1,21 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Card from "react-bootstrap/Card";
 import { actions } from './AppProvider';
 
 import { RoleTypesTable } from 'components/RoleTypesTable';
 import { TextInput } from 'components/TextInput';
-import { AddButton } from 'components/AddButton';
-
-import { bindRoleActions } from '../reducers/_main';
-
-import { RoleTypesTableCopy } from 'components/RoleTypesTable copy';
 
 /**
  * Fetches and displays the list of role types.
  * Allows adding and editing role types.
- *  @returns {JSX.Element} - RoleTypesPage component.
+ * 
+ * @component
+ * @returns {JSX.Element} - RoleTypesPage component.
  */
 export const RoleTypesPage = () => {
 
-    const roleTypes = useSelector(state => state.roleTypes || {});
+    const roleTypes = useSelector(state => state.roleTypes || []);
     
      /**
      * useEffect hook to fetch roles on component mount.
@@ -27,7 +24,6 @@ export const RoleTypesPage = () => {
      */
     useEffect(() => {
         actions.roleTypesFetch();
-        console.log("Something")
     }, []);
 
     return (

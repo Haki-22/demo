@@ -1,55 +1,29 @@
-import { Trash } from 'react-bootstrap-icons';
-import { TextInput } from 'components/TextInput';
-import { DeleteButton } from 'components/DeleteButton';
+import { TypesNameInput } from "./TypesNameInput";
+import { RenameTypeButton } from "./RenameTypeButton";
 
 /**
- * One FinanceType as a table row
- * @param {*} param0 
- * @returns 
+ * FinanceTypes table row component used in the RanksTable component.
+ * 
+ * @component
+ * @param {Object} financeTypes - The financeTypes object to be displayed in the table row.
+ * @param {Object} actions - Actions object for performing operations on finance types.
+ * @param {number} index - The index of the table row
+ * @returns {JSX.Element} - The JSX element representing the table row.
  */
-export const FinanceTypeTableRow = ({index, financeType, actions}) => {
-
-    const onChangeName_en = (value) => {
-        //console.log(financeType, value)
-        if (actions.onFinanceTypeUpdate) {
-            /* console.log(financeType, value, "changeNameinARow") */
-            const payload = {
-                "id": financeType.id,
-                "name":financeType.name,
-                "nameEn":value
-            }
-            console.log(payload)
-            actions.onFinanceTypeUpdate(payload)
-        }
-    }
-
-    const onChangeName = (value) => {
-        
-        if (actions.onFinanceTypeUpdate) {
-            /* console.log(financeType, value, "changeNameinARow") */
-            const payload = {
-                "id": financeType.id,
-                "name":value,
-                "nameEn":financeType.nameEn
-            }
-            console.log(payload)
-            actions.onFinanceTypeUpdate(payload)
-        }
-    }
-
-    return (
-        <tr style={{verticalAlign: "middle"}}>
-            <td>{index}</td>
-            <td>{financeType.id}</td>
-            <td>
-                <TextInput placeholder={"jméno"} id={financeType.id} value={financeType.name} onChange={onChangeName}/>
-            </td>
-            <td>
-                <TextInput placeholder={"jméno anglicky"} id={financeType.id} value={financeType.nameEn} onChange={onChangeName_en}/>
-            </td>
-            <td>
-                Revert?
-            </td>
-        </tr>
-    )
-}
+export const FinanceTypesTableRow = ({ financeType, actions, index }) => {
+  return (
+    <tr style={{verticalAlign: "middle"}}>
+        <td>{index}</td>
+        <td className="px-6 py-4 whitespace-nowrap w-full text-center">{financeType.id}</td>
+        <td>
+          <TypesNameInput type={financeType} name={financeType.name} action={actions.onFinanceTypeUpdate}  />
+        </td>
+        <td>
+          <TypesNameInput type={financeType} nameEn={financeType.nameEn} action={actions.onFinanceTypeUpdate}  />
+        </td>
+        <td>
+          <RenameTypeButton type={financeType} updateExistingAction={actions.onFinanceTypeUpdate} />
+        </td>
+    </tr>
+  );
+};

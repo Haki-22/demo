@@ -1,21 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Card from "react-bootstrap/Card";
 import { actions } from './AppProvider';
-import { TextInput } from 'components/TextInput';
 
 import { FinanceTypesTable } from 'components/FinanceTypesTable';
-import { AddButton } from 'components/AddButton';
+import { TextInput } from 'components/TextInput';
 
 /**
- * Fetches and displays the list of group types.
- * Allows adding and editing group types
+ * Fetches and displays the list of finance types.
+ * Allows adding and editing finance types.
+ * 
+ * @component
  * @returns {JSX.Element} - FinanceTypesPage component.
  */
 export const FinanceTypesPage = () => {
-    const dispatch = useDispatch();
+
     const financeTypes = useSelector(state => state.financeTypes || []);
     
+     /**
+     * useEffect hook to fetch finances on component mount.
+     *
+     * @effect
+     */
     useEffect(() => {
         actions.financeTypesFetch();
     }, []);
@@ -27,7 +33,6 @@ export const FinanceTypesPage = () => {
                 <Card.Body>
                     <FinanceTypesTable financeTypes={financeTypes} actions={actions} />
                 </Card.Body>
-           
                 <TextInput
                     placeholder="Debug"
                     id="a"
@@ -37,4 +42,4 @@ export const FinanceTypesPage = () => {
             </Card>
         </div>
     );
-};
+}

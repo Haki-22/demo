@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export const generateUUID = () => {
-  const uuid = uuidv4();
-  console.log(uuid)
-  return uuid;
-};
-
-// Example usage
-const id = generateUUID();
-console.log(id); // Output: 05a3e0f5-f71e-4caa-8012-229d868aa8ca
+/**
+ * Generates a UUID (Universally Unique Identifier) using the uuidv4 library.
+ * @returns {string} The generated UUID.
+ * @example
+ * 
+ * const uuid = generateUUID();
+ * console.log(uuid); // Output: e.g., "aece4f23-954e-4d41-932b-55f4b51987c2"
+ */
+export const generateUUID = () => uuidv4()

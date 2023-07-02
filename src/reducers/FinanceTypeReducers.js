@@ -1,75 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { v1 as uuid1 } from 'uuid';
-
-
-import { CreateItem, DeleteItem, ReplaceItem, UpdateItem, SelectItem } from './keyedreducers';
-
+import {createSlice} from "@reduxjs/toolkit";
+import { addType, updateExistingType, updateType } from "./VecReducers";
 
 /**
- * Stavova funkce, ktera přidá typ financí
- * @param {*} state 
- * @param {*} action 
- * @returns 
+ * Creates a slice of finance types in Redux.
+ * @property {Array} financeTypes - Array of finance types
+ * @type {FinanceTypesSlice}
  */
-
-
-/*
-const FinanceTypeUpdate = (state, action) => {
-    const updatedft = action.payload;
-    console.log(updatedft, "updatedft");
-    if(state){
-        console.log(state, "state");
-    }
-    
-    state = state.map(financeTypes =>
-    financeTypes.id === updatedft.id ? { ...financeTypes, ...updatedft } : financeTypes
-    );
-    return state;
-  }; */
-  /*
-const FinanceTypeUpdate = (state, action) => {
-    const newItem = action.payload;
-    const oldItem = state[newItem.id]
-    state[newItem.id] = {...oldItem, ...newItem}
-    
-    return state
-}*/
-
-const FinanceTypeAdd =  (state, action) => {
-    const newFinanceType = action.payload
-    console.log("Adding new financeType: ",newFinanceType)
-    state = [...state, newFinanceType]
-    return state
-}
-
-/**
- * Kompletni rez budocim store.
- * Obsluhuje skupiny
- */
-export const FinanceTypeSlice = createSlice({
+const FinanceTypesSlice = createSlice({
     name: 'financeTypes',
     initialState: {
         financeTypes: [],
     },
     reducers: {
-        financeType_add: FinanceTypeAdd,
-        updateExistingFinanceType:(state, action) =>{
-            const updatedEventType = action.payload
-            console.log("Updated EventType:", updatedEventType)
-            state = state.map(eventType => eventType.id === updatedEventType.id ? {...eventType, ...updatedEventType} : eventType)
-            return state
-        },
-        updateFinanceType: (state, action) => {
-            return action.payload;
-    },
+        updateFinanceType: updateType, // Loads financeTypes into store (first load)
+        addFinanceType: addType,
+        updateExistingFinanceType: updateExistingType,
 }
-})
+});
 
-//z rezu odvozene akce
-export const FinanceTypesActions = FinanceTypeSlice.actions
-//z rezu odvozeny stavovy automat
-export const FinanceTypesReducer = FinanceTypeSlice.reducer
+// Exported actions from the finance types slice.
+/**
+ * @type {FinanceTypesSliceActions}
+ */
+export const FinanceTypesActions = FinanceTypesSlice.actions
 
-/*(state, action) => {
-            return action.payload;
-        },*/
+// Exported reducer from the finance types slice.
+/**
+ * @type {FinanceTypesSliceReducer}
+ */
+export const FinanceTypesReducer = FinanceTypesSlice.reducer

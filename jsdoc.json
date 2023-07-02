@@ -1,18 +1,23 @@
 {
-    "source": {
-      "include": ["src"],
-      "includePattern": ".+\\.js(doc|x)?$",
-      "excludePattern": "(node_modules/|docs|backup)"
-    },
-    "plugins": [],
-    "templates": {
-      "cleverLinks": false,
-      "monospaceLinks": false
-    },
-    "opts": {
-      "recurse": true,
-      "destination": "docs",
-      "template": "node_modules/docdash"
-    }
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "include": ["src"],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(node_modules|docs|backup|public)"
+  },
+  "opts": {
+    "template": "node_modules/docdash/",
+    "recurse": true,
+    "destination": "docs"
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
+  "docdash": {
+    "search": true
   }
+}
   

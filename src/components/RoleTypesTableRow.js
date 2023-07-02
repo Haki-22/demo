@@ -1,70 +1,30 @@
-import { useSelector } from "react-redux";
-import { TextInput } from 'components/TextInput';
-import { RoleTypeAsyncUpdate } from "reducers/RoleTypesAsyncActions";
+import { TypesNameInput } from "./TypesNameInput";
+import { RenameTypeButton } from "./RenameTypeButton";
 
 /**
- * A custom table row component used in the RanksTable component.
- * @param {Object} roleTypes - The roleTypes object to be displayed in the table row.
+ * RoleTypes table row component used in the RanksTable component.
  * 
- * @returns {JSX.Element} - Table row component
+ * @component
+ * @param {Object} roleTypes - The roleTypes object to be displayed in the table row.
+ * @param {Object} actions - Actions object for performing operations on role types.
+ * @param {number} index - The index of the table row
+ * @returns {JSX.Element} - The JSX element representing the table row.
  */
-
 export const RoleTypesTableRow = ({ roleType, actions, index }) => {
-
-  const onChangeName_en = (value) => {
-    //console.log(roleType, value)
-    if (actions.onRoleTypeUpdate) {
-        /* console.log(roleType, value, "changeNameinARow") */
-        const payload = {
-            "id": roleType.id,
-            "name":roleType.name,
-            "nameEn":value,
-            "lastchange":roleType.lastchange
-        }
-        console.log(payload)
-        //RoleTypeAsyncUpdate(payload)
-        actions.onRoleTypeUpdateMutation(payload)
-       
-    }
-}
-
-const onChangeName = (value) => {
-    
-    if (actions.onRoleTypeUpdate) {
-        /* console.log(roleType, value, "changeNameinARow") */
-        const payload = {
-            "id": roleType.id,
-            "name":value,
-            "nameEn":roleType.nameEn,
-            "lastchange":roleType.lastchange
-        }
-        console.log(payload)
-        //actions.onRoleTypeUpdate(payload)
-        actions.onRoleTypeUpdateMutation(payload)
-    }
-}
-
-
-
   return (
     <tr style={{verticalAlign: "middle"}}>
         <td>{index}</td>
         <td className="px-6 py-4 whitespace-nowrap w-full text-center">{roleType.id}</td>
         <td>
-        <TextInput
-            placeholder="Název"
-            id={roleType.id}
-            value={roleType.name}
-            onChange={(value) => {onChangeName(value)}}
-        />
+          <TypesNameInput type={roleType} name={roleType.name} action={actions.onRoleTypeUpdate}  />
         </td>
         <td>
-            <TextInput placeholder={"jméno"} id={roleType.id} value={roleType.nameEn} onChange={onChangeName_en}
-            />
-            </td>
+          <TypesNameInput type={roleType} nameEn={roleType.nameEn} action={actions.onRoleTypeUpdate}  />
+        </td>
         <td className="px-6 py-4 whitespace-nowrap w-full">{roleType.lastchange} </td>
-        <td> Revert? </td>
-
+        <td>
+          <RenameTypeButton type={roleType} updateExistingAction={actions.onRoleTypeUpdateMutation} />
+        </td>
     </tr>
   );
 };

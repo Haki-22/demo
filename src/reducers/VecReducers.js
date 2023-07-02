@@ -11,7 +11,7 @@ export const addType = (state, action) => {
 }
 
 /**
- * Reducer function for loads types into store (first load)
+ * Reducer function that loads types into store (first load)
  *
  * @param {Array} state - The current state array.
  * @param {Object} action - The action object containing the payload.

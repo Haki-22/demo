@@ -1,74 +1,29 @@
-import { useSelector } from "react-redux";
-import { TextInput } from 'components/TextInput';
-import { ProjectTypeAsyncUpdate } from "reducers/ProjectTypesAsyncActions";
+import { TypesNameInput } from "./TypesNameInput";
+import { RenameTypeButton } from "./RenameTypeButton";
 
 /**
- * A custom table row component used in the RanksTable component.
- * @param {Object} projectTypes - The projectTypes object to be displayed in the table row.
+ * ProjectTypes table row component used in the RanksTable component.
  * 
- * @returns {JSX.Element} - Table row component
+ * @component
+ * @param {Object} projectTypes - The projectTypes object to be displayed in the table row.
+ * @param {Object} actions - Actions object for performing operations on project types.
+ * @param {number} index - The index of the table row
+ * @returns {JSX.Element} - The JSX element representing the table row.
  */
-
 export const ProjectTypesTableRow = ({ projectType, actions, index }) => {
-
-  const onChangeName_en = (value) => {
-    //console.log(projectType, value)
-    if (actions.onProjectTypeUpdate) {
-        /* console.log(projectType, value, "changeNameinARow") */
-        const payload = {
-            "id": projectType.id,
-            "name":projectType.name,
-            "nameEn":value,
-        }
-        console.log(payload)
-        actions.onProjectTypeUpdate(payload)
-        //actions.onProjectTypeUpdateMutation(payload)
-       
-    }
-}
-
-const onChangeName = (value) => {
-    
-    if (actions.onProjectTypeUpdate) {
-        /* console.log(projectType, value, "changeNameinARow") */
-        const payload = {
-            "id": projectType.id,
-            "name":value,
-            "nameEn":projectType.nameEn,
-        }
-        console.log(payload)
-        actions.onProjectTypeUpdate(payload)
-        //actions.onProjectTypeUpdateMutation(payload)
-    }
-}
-
-
-
   return (
     <tr style={{verticalAlign: "middle"}}>
         <td>{index}</td>
         <td className="px-6 py-4 whitespace-nowrap w-full text-center">{projectType.id}</td>
         <td>
-        <TextInput
-            placeholder="Název"
-            id={projectType.id}
-            value={projectType.name}
-            onChange={(value) => {onChangeName(value)}}
-        />
+          <TypesNameInput type={projectType} name={projectType.name} action={actions.onProjectTypeUpdate}  />
         </td>
         <td>
-            <TextInput placeholder={"jméno"} id={projectType.id} value={projectType.nameEn} onChange={onChangeName_en}
-            />
+          <TypesNameInput type={projectType} nameEn={projectType.nameEn} action={actions.onProjectTypeUpdate}  />
         </td>
-        {/*
         <td>
-        <DeleteButton onClick={() => onClickDelete(projectType.id)}>
-            <Trash /> Delete
-        </DeleteButton>
+          <RenameTypeButton type={projectType} updateExistingAction={actions.onProjectTypeUpdate} />
         </td>
-        */}
-        <td> Revert? </td>
-
     </tr>
   );
 };

@@ -1,9 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
 import { addType, updateExistingType, updateType } from "./VecReducers";
-import { RoleTypeAsyncUpdate } from "./RoleTypesAsyncActions";
 
 /**
- * Creates a slice of roletypes in Redux.
+ * Creates a slice of role types in Redux.
+ * @property {Array} roleTypes - Array of role types
+ * @type {RoleTypesSlice}
  */
 const RoleTypesSlice = createSlice({
     name: 'roleTypes',
@@ -11,15 +12,20 @@ const RoleTypesSlice = createSlice({
         roleTypes: [],
     },
     reducers: {
-
         updateRoleType: updateType, // Loads roleTypes into store (first load)
         addRoleType: addType,
         updateExistingRoleType: updateExistingType,
-        //updateMutationRoleType: RoleTypeAsyncUpdate
 }
 });
 
-//z rezu odvozene akce
+// Exported actions from the role types slice.
+/**
+ * @type {RoleTypesSliceActions}
+ */
 export const RoleTypesActions = RoleTypesSlice.actions
-//z rezu odvozeny stavovy automat
+
+// Exported reducer from the role types slice.
+/**
+ * @type {RoleTypesSliceReducer}
+ */
 export const RoleTypesReducer = RoleTypesSlice.reducer

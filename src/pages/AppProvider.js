@@ -4,20 +4,20 @@ import { configureStore } from '@reduxjs/toolkit'
 //import { bindGroupActions, bindRoleActions, bindGFinanceTypeActions } from 'reducers/_main';
 //import { GroupReducer } from 'reducers/groupreducers'; 
 
-//import { RanksReducer } from 'reducers/RanksReducers';
-//import { bindRanksActions } from 'reducers/_main';
-
 import { RoleTypesActions, RoleTypesReducer } from 'reducers/RoleTypesReducers';
-import { GroupTypesActions, GroupTypesReducer } from 'reducers/GroupTypeReducers';
+import { GroupTypesActions, GroupTypesReducer } from 'reducers/GroupTypesReducers';
 import { FinanceTypesReducer } from 'reducers/FinanceTypeReducers';
 import { EventTypesReducer } from 'reducers/EventTypeReducers'
 import { ProjectTypesReducer } from 'reducers/ProjectTypesReducers';
+import { MedalTypesReducer } from 'reducers/MedalTypesReducers';
 
-import { bindFinanceTypeActions, bindProjectTypeActions, bindRoleTypeActions, bindEventTypeActions, bindGroupTypeActions } from 'reducers/_main';
+import { bindFinanceTypeActions, bindProjectTypeActions, bindRoleTypeActions, bindEventTypeActions, bindGroupTypeActions, bindMedalTypeActions } from 'reducers/_main';
 
 /**
+ * Redux store configuration.
  * This is the main store for the entire application.
  * It includes the necessary reducers and preloaded state.
+ * @type {Store}
  */
 export const store = configureStore({
   reducer: {
@@ -26,6 +26,7 @@ export const store = configureStore({
     financeTypes: FinanceTypesReducer,
     eventTypes: EventTypesReducer,
     projectTypes: ProjectTypesReducer,
+    medalTypes: MedalTypesReducer,
     
   },
   preloadedState: {
@@ -34,6 +35,7 @@ export const store = configureStore({
     financeTypes: [],
     eventTypes: [],
     projectTypes:[],
+    medalTypes: [],
   },
 });
 
@@ -47,12 +49,12 @@ const dispatch = store.dispatch;
  */
 export const actions = {
   //...bindGroupActions(dispatch),
-  //...bindRanksActions(dispatch),
   ...bindFinanceTypeActions(dispatch),
   ...bindEventTypeActions(dispatch),
   ...bindRoleTypeActions(dispatch),
   ...bindGroupTypeActions(dispatch),
   ...bindProjectTypeActions(dispatch),
+  ...bindMedalTypeActions(dispatch),
 
 };
 

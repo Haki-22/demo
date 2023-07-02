@@ -41,20 +41,28 @@ Components in demo repo
 
 - Tables now display all of the data
 
-## 16.06 - 19.06.
+## 16.06. - 19.06.
 Revised progress on consultation, seems good
 
-- Add and modify store
+- Add and modify store 
+    - Vec reducers
 
 - Send new or modified data to server for roleTypes
+    - AsyncActions
+
+
+4/9 Tables displaying server data
 
 ## 21.06
+5/9 Tables displaying server data
 
 - Project types
 
 - Addbutton test
 
 - JSDOC
+
+- NameInput, after entering text automatically changes on server 
 
 >Fixed:
 >   
@@ -79,45 +87,46 @@ Revised progress on consultation, seems good
 >
 >
 
+## 24.06. - 2.07.
+6/6 Tables displaying server data (3/9 don't have queries nor mutations)
+
+2/2 Can update real server data (6/9 don't have mutations)
+
+- Mutation for groupType
+
+- medalType page
+
+2/2 Can add type (RoleTypes, GroupTypes)
+
+- TypesNameInput: Component for name input (Can take name or nameEn) (input box pro název typu)
+
+- RenameType button: Component for renaming the type (button pro přejmenování typu)
+
+    - Implementation for more types
+
+    - RenameRoleType button for single type
+
+- Ensure that the name doesnt end with blank spaces (trim)
+
+- Add Table Row component - row for adding a new type
+
+- Comments and JSDOC
 
 ---
 
 Todo:
 
-- Lepší dictionary než vektor - Přes dic to dělalo divné věci :)
-
-- Mutation for groupType
-
-- query and page for Medal types 
-
-- JSDoc
+- Lepší dictionary než vektor - Vše je přes ID 
 
 - Reverse button?
 
-- Smazat mezery z payload stringu
+---
 
-
-
-> Ask:
->   
->   - AddButton
->
->   - RowPage?
->
->   - Jak moc rozdělit AsyncActions 
-
-
-
-
-
- 
- 
- 
 ## ALL 
 Editace systémových informací (typy entit, kategorie entit) ?? 
 - **DONE** typy rolí uživatelů ve skupinách, => garant, velitel čety - roleTypePage
 
-- **Add mutation** typy skupin, - groupTypePage
+- **DONE** typy skupin, - groupTypePage
 
 **Neexistuje mutation**:
 
@@ -125,7 +134,7 @@ Editace systémových informací (typy entit, kategorie entit) ??
 
 -  typy událostí, => Výuka, nástup, zkouška, konzultace - evenetTypePage
 
-- typy projektů, => podskupiny grantů (GAČR, TECHONOLOGICKÁ tačr) - projectTypePage
+-  typy projektů, => podskupiny grantů (GAČR, TECHONOLOGICKÁ tačr) - projectTypePage
 
 -  typy medailí => zlatá, stříbrná, bronzová ... 
 

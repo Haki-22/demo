@@ -1,7 +1,7 @@
 /**
- * Vytvari zpozdovac,
+ * Creates delayer,
  * @param {*} delay 
- * @returns 
+ * @returns {Function} delayer - deayling funciton
  */
 export const CreateDelayer = (delay=300) => {
     //lokalni promenna
