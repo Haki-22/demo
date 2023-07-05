@@ -5,6 +5,8 @@ import { RoleTypesActions } from "../reducers/RoleTypesReducers";
 
 /**
  * Helper function for fetching role types data and performs subsequent actions.
+ * 
+ * @function
  * @param {Function} query - The function that initiates the network request.
  * @param {Function} resultselector - The function that processes the response data.
  * @param {Function} dispatch - The function to dispatch actions to the Redux store.
@@ -44,6 +46,8 @@ export const RoleTypesFetchHelper = (query, resultselector, dispatch, getState) 
 /**
  * Async function for fetching role types using the helper function.
  * Fetches role types from the server and puts them into store.
+ * 
+ * @function
  * @returns {Promise} - A promise that resolves to the fetched role types.
  */
 export const RoleTypesFetch = () => (dispatch, getState) => {
@@ -56,6 +60,8 @@ export const RoleTypesFetch = () => (dispatch, getState) => {
 
 /**
  * Async function for updating a role type and dispatching the updated role type to the Redux store.
+ * 
+ * @function
  * @param {Object} RoleType - The role type object to update.
  * @returns {Promise<Object>} - A promise that resolves to the JSON response.
  */
@@ -117,6 +123,8 @@ export const RoleTypeAsyncUpdate= (RoleType) => (dispatch, getState) => {
 
 /**
  * Async function for adding a role type and dispatching the updated role type to the Redux store.
+ * 
+ * @function
  * @param {Object} RoleType - The role type object to add.
  * @returns {Promise<Object>} - A promise that resolves to the JSON response.
  */

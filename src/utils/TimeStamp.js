@@ -1,5 +1,6 @@
 /**
  * Generates a timestamp in the format "YYYY-MM-DD HH:mm:ss.SSS".
+ * @function
  * @returns {string} The generated timestamp.
  */
 export const generateTimestamp = () => {

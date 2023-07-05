@@ -5,6 +5,7 @@ import { CreateDelayer } from 'utils/CreateDelayer'
 
 /**
  * Editable Text (input type="text")
+ * @function
  * @param {*} id mandatory identification, often related to id of entity 
  * @param {str} value value of input
  * @param {str} placeholder value of help if the text is not displayed

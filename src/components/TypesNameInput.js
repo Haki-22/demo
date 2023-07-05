@@ -9,6 +9,7 @@ import { CreateDelayer } from 'utils/CreateDelayer';
 
 /**
  * Component for a types name or nameEn input field depending on the provided prop. (Works with store)
+ * @function
  * @param {Object} type - The type object.
  * @param {string} name - The initial name of the input.
  * @param {string} nameEn - The initial name in english of the input.

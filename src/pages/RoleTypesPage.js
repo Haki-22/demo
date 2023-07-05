@@ -10,7 +10,7 @@ import { TextInput } from 'components/TextInput';
  * Fetches and displays the list of role types.
  * Allows adding and editing role types.
  * 
- * @component
+ * @function
  * @returns {JSX.Element} - RoleTypesPage component.
  */
 export const RoleTypesPage = () => {

@@ -120,6 +120,8 @@ Todo:
 
 - Reverse button?
 
+- @function into all comments
+
 ---
 
 ## ALL 

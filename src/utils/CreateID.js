@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 /**
  * Generates a UUID (Universally Unique Identifier) using the uuidv4 library.
+ * @function
  * @returns {string} The generated UUID.
  * @example
  * 

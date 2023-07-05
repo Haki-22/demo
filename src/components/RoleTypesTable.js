@@ -4,7 +4,7 @@ import { AddTypeRow } from './AddTypeRow';
 /**
  * Table component used to display a list of roleTypes
  * 
- * @component
+ * @function
  * @param {Object[]} roleTypes - An array of role types.
  * @param {Object} actions - Actions object for performing operations on role types.
  * @returns {JSX.Element} The rendered RoleTypesTable component.

@@ -2,7 +2,7 @@ import {authorizedFetch} from "./authorizedFetch";
 
 /**
  * Generates the JSON object for querying a role type by ID.
- *
+ * @function
  * @param {string} id - The ID of the role type.
  * @returns {Object} The query JSON object.
  */
@@ -18,10 +18,11 @@ export const RoleQueryJSON = (id) => ({
 });
 
 /**
-* Generates the JSON object for querying all role types.
-*
-* @returns {Object} The query JSON object.
-*/
+  * Generates the JSON object for querying all role types.
+  *
+  * @function
+  * @returns {Object} The query JSON object.
+  */
 export const RoleTypesQueryJSON = () => ({
   "query": `query{
       roleTypePage(limit: 30){
@@ -31,21 +32,23 @@ export const RoleTypesQueryJSON = () => ({
 });
 
 /**
-* Sends a request to query a role type by ID.
-*
-* @param {string} id - The ID of the role type.
-* @returns {Promise<Response>} The fetch request promise.
-*/
+  * Sends a request to query a role type by ID.
+  *
+  * @function
+  * @param {string} id - The ID of the role type.
+  * @returns {Promise<Response>} The fetch request promise.
+  */
 export const RoleQuery = (id) =>
   authorizedFetch('/gql', {
       body: JSON.stringify(RoleQueryJSON(id)),
   });
 
 /**
-* Sends a request to query all role types.
-*
-* @returns {Promise<Response>} The fetch request promise.
-*/
+  * Sends a request to query all role types.
+  *
+  * @function
+  * @returns {Promise<Response>} The fetch request promise.
+  */
 export const RoleTypesQuery = () =>
   authorizedFetch('/gql', {
       body: JSON.stringify(RoleTypesQueryJSON()),

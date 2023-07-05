@@ -1,5 +1,6 @@
 /**
  * Creates delayer,
+ * @function
  * @param {*} delay 
  * @returns {Function} delayer - deayling funciton
  */

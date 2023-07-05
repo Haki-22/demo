@@ -4,7 +4,7 @@ import { RenameTypeButton } from "./RenameTypeButton";
 /**
  * RoleTypes table row component used in the RanksTable component.
  * 
- * @component
+ * @function
  * @param {Object} roleTypes - The roleTypes object to be displayed in the table row.
  * @param {Object} actions - Actions object for performing operations on role types.
  * @param {number} index - The index of the table row

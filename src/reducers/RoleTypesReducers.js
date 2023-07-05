@@ -3,6 +3,7 @@ import { addType, updateExistingType, updateType } from "./VecReducers";
 
 /**
  * Creates a slice of role types in Redux.
+ * @function
  * @property {Array} roleTypes - Array of role types
  * @type {RoleTypesSlice}
  */

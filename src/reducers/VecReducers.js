@@ -1,6 +1,7 @@
 /**
  * Reducer function for adding a type to the state.
  *
+ * @function
  * @param {Array} state - The current state array.
  * @param {Object} action - The action object containing the payload.
  * @returns {Array} The updated state array with the new type added.
@@ -13,6 +14,7 @@ export const addType = (state, action) => {
 /**
  * Reducer function that loads types into store (first load)
  *
+ * @function
  * @param {Array} state - The current state array.
  * @param {Object} action - The action object containing the payload.
  * @returns {Array} The updated state array with the new type added.
@@ -24,6 +26,7 @@ export const updateType = (state, action) => {
 /**
  * Reducer function for updating an existing type in the state.
  *
+ * @function
  * @param {Array} state - The current state array.
  * @param {Object} action - The action object containing the payload.
  * @returns {Array} The updated state array with the type updated.
