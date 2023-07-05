@@ -165,4 +165,51 @@ query {medalTypePage {
 
     - Existuje pouze: query {medalPage{id year}}
 
+---
 
+# Task:
+## ALL 
+Editace systémových informací (typy entit, kategorie entit) ?? 
+- typy skupin, 
+- typy rolí uživatelů ve skupinách, => garant, velitel čery
+- typy událostí, => Výuka, nástup, zkouška, konzultace
+- kategorie projektů, => Granty ČR, mezinárodní EU
+- typy projektů, => podskupiny grantů (GAČR, TECHONOLOGICKÁ tačr)
+- kategorie financí => nadtypama
+- typy financí => osobní, nákup služeb (Rozdělení rozpočtu)
+- kategorie medailí => Vyznamenání (statní, vojenská,...)
+- typy medailí => zlatá, stříbrná, bronzová ... 
+
+Umožnit administrátorovi zadávat tyto hodnoty |↑↑| (Nejspíše vybrat z nich a nebo je upravit ?) (jsou v backendu najdeš [pod](https://github.com/hrbolek/_uois/blob/v2.1/gql_personalities/gql_personalities/DBFeeder.py))
+
+(1 student)
+
+## UI
+- input box pro název typu
+- button pro přejmenování typu
+
+# Deník
+
+Diary for 5 points. Written in DD:MM Format. 
+
+## Until 29.4.
+1. Worked [here](https://github.com/Haki-22/_uois_ui_helpers)
+
+## 29.4. - 02.05.
+Started writing this repo, tried
+- React
+- Bootstrap 
+- NextJS 
+- Typescript 
+- Tailwind 
+- [AI website](https://youtu.be/vpvtZZi5ZWk)
+- Got UIOS to work
+
+First component that take real data into table
+
+In order to take data from UIOS I have to know how to ask for them :)
+
+Todo:
+- API call to uios
+- function that takes promise
+- Wrap into store
